@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}本の詳細{% endblock %}
+
+{% block h1 %}
+{{ book.volumeInfo.title }}の詳細
+{% endblock %}
+
+{% block content %}
+    <h3>{{ book.volumeInfo.title }}</h3>
+    {% if book.volumeInfo.imageLinks %}
+        <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="本の表紙" />
+    {% endif %}
+    <p><strong>著者:</strong> {{ book.volumeInfo.authors|join:", " }}</p>
+    <p><strong>出版日:</strong> {{ book.volumeInfo.publishedDate }}</p>
+    <p><strong>出版社:</strong> {{ book.volumeInfo.publisher }}</p>
+    <p><strong>説明:</strong> {{ book.volumeInfo.description|safe }}</p>
+    {% comment %} |safeは説明文にbrとかが出てしまうのを防ぐためにする {% endcomment %}
+
+    {% comment %} jsで1つ前に戻るやつ {% endcomment %}
+    <a href="javascript:history.back()" class="btn btn-primary">戻る</a>
+{% endblock %}

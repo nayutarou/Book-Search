@@ -4,9 +4,14 @@ from django.shortcuts import render, redirect  # Djangoのショートカット�
 from django.contrib.auth.decorators import login_required  # ログインしていないユーザーを制限するためのデコレーター
 from django.contrib.auth.models import AnonymousUser  # 匿名ユーザーをチェックするためにインポート
 from django.utils.timezone import now
+from dotenv import load_dotenv
+import os
 
-# Google Books APIキー
-API_KEY = "AIzaSyD5-MxY44zGd0aZ367o6ey8SCoZ4wCoZvI"  # Google Books APIを呼び出すためのキー
+# .envファイルから環境変数を読み込む
+load_dotenv()
+
+# 環境変数を取得
+API_KEY = os.getenv("GOOGLE_API_KEY")# Google Books APIを呼び出すためのキー
 
 
 @login_required  # ログインユーザのみ

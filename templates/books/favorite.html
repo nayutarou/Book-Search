@@ -10,7 +10,7 @@
           <h3>{{ book.title }}</h3>
           <img src="{{ book.thumbnail }}" alt="{{ book.title }}" style="width:100px; height:auto;">
           <p>著者: {{ book.authors }}</p>
-          <p>出版日: {{ book.published_date }}</p>
+          <p>出版日: {{ book.published_date|default:"不明" }}</p>
           <a href="{% url 'detail-books' book.google_book_id %}" class="btn btn-primary">詳細を見る</a>
           <a href="{% url 'remove-from-favorites' book.google_book_id %}" class="btn btn-danger fs-6 mx-3">お気に入り解除</a>
         </li>

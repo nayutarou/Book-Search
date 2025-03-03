@@ -34,8 +34,9 @@ def AddFavorites(request, google_book_id):
                 authors=", ".join(book_info.get("authors", ["不明"])),  # 著者情報を取得
                 description=book_info.get("description", "説明なし"),  # 説明部分を取得
                 thumbnail=book_info.get("imageLinks", {}).get("thumbnail", ""),  # 画像を取得
+                published_date=book_info.get("publishedDate", "不明"),  # 出版日を取得
             )
-            print(f" 本をデータベースに追加: {book.title}")  # データが取れている確認
+            print(f" 本をデータベースに追加: {book.published_date}")  # データが取れている確認
         else:
             print(" Google Books API から本を取得できなかった")  # APIから本を取得できなかった場合
             return render(request, 'booksearch/error.html', {'error': '本が見つかりませんでした。'})  # エラーページ
